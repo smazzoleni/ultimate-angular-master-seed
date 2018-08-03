@@ -1,43 +1,49 @@
 function AuthService($firebaseAuth) {
-    var auth = $firebaseAuth();
-    var authData = null;
+    let auth = $firebaseAuth();
+    let authData = null;
 
-    function storeAuthData(response) {
+    const storeAuthData = response => {
         authData = response;
         return authData;
-    }
-
-    function onSignIn(user) {
+    };
+    const onSignIn = user => {
+        console.log('sign in ?');
         authData = user;
         return auth.$requireSignIn();
-    }
-
-    function clearAuthData() {
-        authData = null;
-    }
-    this.login = function(user) {
-        return auth
-            .$signInWithEmailAndPassword(user.email, user.password)
-            .then(storeAuthData);
     };
+    const clearAuthData = () => {
+        authData = null;
+    };
+
     this.register = function(user) {
         return auth
             .$createUserWithEmailAndPassword(user.email, user.password)
             .then(storeAuthData);
     };
-    this.logout = function() {
-        return auth.$signOut().then(clearAuthData);
+
+    this.login = function(user) {
+        return auth
+            .$signInWithEmailAndPassword(user.email, user.password)
+            .then(storeAuthData);
     };
+
     this.requireAuthentication = function() {
+        console.log('waiting for sign in ?');
         return auth.$waitForSignIn().then(onSignIn);
     };
+
     this.isAuthenticated = function() {
         return !!authData;
     };
-    this.getUser = function() {
+
+    this.getUser = () => {
         if (authData) {
             return authData;
         }
+    };
+
+    this.logout = () => {
+        return auth.$signOut().then(clearAuthData);
     };
 }
 

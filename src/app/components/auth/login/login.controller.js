@@ -1,5 +1,5 @@
 function LoginController(AuthService, $state) {
-    var ctrl = this;
+    let ctrl = this;
     ctrl.$onInit = function() {
         ctrl.error = null;
         ctrl.user = {
@@ -7,13 +7,16 @@ function LoginController(AuthService, $state) {
             password: '',
         };
     };
+
     ctrl.loginUser = function(event) {
+        ctrl.error = null;
         return AuthService.login(event.user).then(
-            function() {
+            function(user) {
+                console.log('Login success', user);
                 $state.go('app');
             },
-            function(reason) {
-                ctrl.error = reason.message;
+            function(err) {
+                ctrl.error = err.message;
             }
         );
     };

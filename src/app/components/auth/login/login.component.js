@@ -1,4 +1,4 @@
-var login = {
+let login = {
     templateUrl: './login.html',
     controller: 'LoginController',
 };
@@ -17,5 +17,6 @@ angular
                 url: '/login',
                 component: 'login',
             });
+
         $urlRouterProvider.otherwise('/auth/login');
     });
