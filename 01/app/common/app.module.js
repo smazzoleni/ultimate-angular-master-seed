@@ -1,4 +1,1 @@
-angular
-  .module('common', [
-    'ui.router'
-  ]);
+angular.module('common', ['ui.router']);

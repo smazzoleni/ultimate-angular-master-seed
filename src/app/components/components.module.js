@@ -1,5 +1,1 @@
-angular
-  .module('components', [
-    'components.contact',
-    'components.auth'
-  ]);
+angular.module('components', ['components.contact', 'components.auth']);
