@@ -31,6 +31,11 @@ function ContactDetailController() {
             },
         });
     };
+
+    ctrl.tagChange = event => {
+        ctrl.contact.tag = event.tag;
+        ctrl.updateContact();
+    };
 }
 
 angular
