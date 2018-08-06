@@ -8,9 +8,10 @@ function ContactService(
     let uid = AuthService.getUser().uid;
     return {
         createNewContact,
-        getContactById,
-        updateContact,
         deleteContact,
+        getContactById,
+        getContactList,
+        updateContact,
     };
 
     function createNewContact(contact) {
@@ -27,6 +28,10 @@ function ContactService(
 
     function deleteContact(contact) {
         return contact.$remove();
+    }
+
+    function getContactList() {
+        return $firebaseArray(ref.child(uid));
     }
 }
 
