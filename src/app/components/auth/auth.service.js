@@ -7,7 +7,6 @@ function AuthService($firebaseAuth) {
         return authData;
     };
     const onSignIn = user => {
-        console.log('sign in ?');
         authData = user;
         return auth.$requireSignIn();
     };
@@ -28,7 +27,6 @@ function AuthService($firebaseAuth) {
     };
 
     this.requireAuthentication = function() {
-        console.log('waiting for sign in ?');
         return auth.$waitForSignIn().then(onSignIn);
     };
 

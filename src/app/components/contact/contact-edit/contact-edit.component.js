@@ -17,8 +17,6 @@ angular
             resolve: {
                 contact: function($transition$, ContactService) {
                     var key = $transition$.params().id;
-                    console.log('key', key);
-
                     return ContactService.getContactById(key).$loaded();
                 },
             },

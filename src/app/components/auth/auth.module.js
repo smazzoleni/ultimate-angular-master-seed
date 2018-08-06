@@ -19,12 +19,10 @@ angular
         $transitions.onStart(
             {
                 to: function(state) {
-                    console.log('to', state);
                     return !!(state.data && state.data.requiredAuth);
                 },
             },
             function() {
-                console.log('on start ?');
                 return AuthService.requireAuthentication().catch(function() {
                     return $state.target('auth.login');
                 });

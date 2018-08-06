@@ -1,6 +1,5 @@
 function contactsFilter() {
     return function(collection, params) {
-        console.log('collection passed in', collection);
         return collection.filter(item => {
             return (
                 item.tag ===

@@ -2,7 +2,6 @@ function ContactDetailController() {
     let ctrl = this;
 
     ctrl.$onInit = () => {
-        console.log(ctrl);
         ctrl.isNewContact = !ctrl.contact.$id;
     };
 
