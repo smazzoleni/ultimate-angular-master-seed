@@ -2,7 +2,7 @@ function ContactsController($state) {
     let ctrl = this;
 
     ctrl.goToContact = event => {
-        // $state.go('contact', {id: event.contactId})
+        $state.go('contact', { id: event.contactId });
     };
 }
 
