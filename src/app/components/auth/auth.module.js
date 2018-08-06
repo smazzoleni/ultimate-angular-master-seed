@@ -11,7 +11,7 @@ angular
         };
         $firebaseRefProvider.registerUrl({
             default: config.databaseURL,
-            contacts: config.databaseURL + 'contacts',
+            contacts: config.databaseURL + '/contacts',
         });
         firebase.initializeApp(config);
     })
