@@ -15,7 +15,7 @@ function ContactEditController(ContactService, cfpLoadingBar, $window, $state) {
         var message = `Delete ${event.contact.name} from contacts ?`;
         if ($window.confirm(message)) {
             return ContactService.deleteContact(event.contact).then(() => {
-                $state.go('contact');
+                $state.go('contacts');
             });
         }
     };
