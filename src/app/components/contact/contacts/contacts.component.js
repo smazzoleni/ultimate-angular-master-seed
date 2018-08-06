@@ -1,6 +1,7 @@
 let contacts = {
     bindings: {
         contacts: '<',
+        filter: '<',
     },
     templateUrl: './contacts.html',
     controller: 'ContactsController',
@@ -12,11 +13,19 @@ angular
     .config(function($stateProvider) {
         $stateProvider.state('contacts', {
             parent: 'app',
-            url: '/contacts',
+            url: '/contacts?filter',
             component: 'contacts',
+            params: {
+                filter: {
+                    value: 'none', // default value
+                },
+            },
             resolve: {
                 contacts: function(ContactService) {
                     return ContactService.getContactList().$loaded();
+                },
+                filter: function($transition$) {
+                    return $transition$.params();
                 },
             },
         });
